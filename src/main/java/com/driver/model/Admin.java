@@ -5,36 +5,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "ADMIN")
+@Table(name = "admin")
 public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
     private String username;
-
     private String password;
 
     @OneToMany(mappedBy = "admin",cascade = CascadeType.ALL)
-    private List<ServiceProvider> serviceProviderList=new ArrayList<>();
-
-    //crete all args no args constructor
+    private List<ServiceProvider> serviceProviders=new ArrayList<>();
 
     public Admin() {
     }
 
-    public Admin(Integer id, String username, String password, List<ServiceProvider> serviceProviderList) {
+    public Admin(int id, String username, String password, List<ServiceProvider> serviceProviders) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.serviceProviderList = serviceProviderList;
+        this.serviceProviders = serviceProviders;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -54,12 +51,11 @@ public class Admin {
         this.password = password;
     }
 
-    public List<ServiceProvider> getServiceProviderList() {
-        return serviceProviderList;
+    public List<ServiceProvider> getServiceProviders() {
+        return serviceProviders;
     }
 
-    public void setServiceProviderList(List<ServiceProvider> serviceProviderList) {
-        this.serviceProviderList = serviceProviderList;
+    public void setServiceProviders(List<ServiceProvider> serviceProviders) {
+        this.serviceProviders = serviceProviders;
     }
-    //create all getter and setter
 }
